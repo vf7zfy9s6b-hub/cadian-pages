@@ -1,0 +1,35 @@
+---
+const faqs = [
+  { q: "CADian DWG ile uyumlu mu?", a: "Evet. CADian DWG odaklı çalışır; mevcut DWG iş akışınızı bozmadan devam etmenizi hedefler." },
+  { q: "Fiyat var mı? Neden teklif alıyoruz?", a: "Kurumsal/ekip ihtiyaçları kullanıcı sayısı ve lisans tipine göre değiştiği için en doğru fiyatı teklif ile veriyoruz." },
+  { q: "Demo nasıl indiriliyor?", a: "Demo İndir sayfasından formu doldurup demo bağlantısına ulaşabilirsiniz. İsterseniz size e-posta ile de iletiriz." },
+];
+
+---
+
+<section class="card" style="padding:18px;">
+  <div class="kicker">SSS</div>
+  <div class="title">Sık sorulan sorular</div>
+
+  <div class="list">
+    {faqs.map((f, idx) => (
+      <details class="item" open={idx === 0}>
+        <summary>{f.q}</summary>
+        <div class="ans">{f.a}</div>
+      </details>
+    ))}
+  </div>
+
+  <style>
+    .title{font-weight:900; font-size:20px; margin-top:6px;}
+    .list{margin-top: 12px; display:flex; flex-direction:column; gap: 10px;}
+    .item{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    summary{cursor:pointer; font-weight:800;}
+    .ans{margin-top: 8px; color: rgba(231,234,240,.78); line-height: 1.6; font-size: 14px;}
+  </style>
+</section>

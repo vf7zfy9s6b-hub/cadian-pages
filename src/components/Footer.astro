@@ -1,0 +1,61 @@
+---
+const links = [
+  { href: "/hakkimizda", label: "Hakkımızda" },
+  { href: "/kariyer", label: "Kariyer" },
+  { href: "/gizlilik", label: "Gizlilik" },
+  { href: "/cerezler", label: "Çerezler" },
+  { href: "/blog", label: "Blog" },
+];
+---
+
+<footer class="f">
+  <div class="inner">
+    <div class="top">
+      <div>
+        <div class="brand">CADian</div>
+        <div class="muted">AutoCAD alternatifi CADian – Hızlı, Uyumlu, Ekonomik</div>
+      </div>
+      <div class="links">
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+    <div class="bottom">
+      <span class="muted">© {new Date().getFullYear()} CADian. Tüm hakları saklıdır.</span>
+      <span class="muted">cadian.com.tr</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .f{
+    border-top: 1px solid rgba(255,255,255,.10);
+    background: rgba(3,7,18,.55);
+  }
+  .inner{
+    width:min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 22px 0;
+  }
+  .top{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap: 16px;
+  }
+  .brand{font-weight: 800; letter-spacing: -.01em; font-size: 16px}
+  .muted{color: rgba(231,234,240,.72); font-size: 14px; margin-top: 6px}
+  .links{display:flex; gap: 12px; flex-wrap:wrap; justify-content:flex-end;}
+  .links a{
+    font-size: 14px;
+    color: rgba(231,234,240,.78);
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+  }
+  .links a:hover{color: rgba(231,234,240,.95); background: rgba(255,255,255,.07);}
+  .bottom{
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,.10);
+    display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap;
+  }
+</style>

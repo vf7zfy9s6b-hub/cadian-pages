@@ -1,0 +1,31 @@
+---
+const items = ["Referans 1", "Referans 2", "Referans 3", "Referans 4", "Referans 5", "Referans 6"];
+---
+
+<section class="card" style="padding:16px;">
+  <div class="kicker">Referanslar</div>
+  <div class="muted" style="margin-top:6px;">Logoları birazdan ekleyeceğiz (PNG/SVG gönderdiğinde yerine koyarım).</div>
+  <div class="row" aria-label="Referans logoları">
+    {items.map(i => <div class="logo">{i}</div>)}
+  </div>
+
+  <style>
+    .row{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .logo{
+      height: 54px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(231,234,240,.72);
+      font-size: 13px;
+    }
+    @media (max-width: 920px){ .row{grid-template-columns: repeat(3, minmax(0,1fr));} }
+    @media (max-width: 520px){ .row{grid-template-columns: repeat(2, minmax(0,1fr));} }
+  </style>
+</section>

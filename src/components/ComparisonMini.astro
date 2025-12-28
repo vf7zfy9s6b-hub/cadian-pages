@@ -1,0 +1,64 @@
+---
+const rows = [
+  { k: "DWG uyumu", a: "DWG odaklı iş akışı", b: "DWG ile çalışır" },
+  { k: "Arayüz & komutlar", a: "Tanıdık arayüz, bilinen komutlar", b: "Standart" },
+  { k: "Lisans modeli", a: "Kalıcı lisans seçenekleri", b: "Abonelik ağırlıklı" },
+  { k: "Maliyet", a: "Daha ekonomik teklif", b: "Daha yüksek toplam maliyet" },
+];
+---
+
+<section class="card" style="padding:18px;">
+  <div class="head">
+    <div>
+      <div class="kicker">Kısa karşılaştırma</div>
+      <div class="title">AutoCAD vs CADian</div>
+      <div class="muted" style="margin-top:6px;">İhtiyacına göre doğru lisansı önerelim — fiyat göstermiyoruz, teklif veriyoruz.</div>
+    </div>
+    <a class="btn" href="/karsilastirma">Tüm karşılaştırma →</a>
+  </div>
+
+  <div class="grid">
+    <div class="col h">Konu</div>
+    <div class="col h">CADian</div>
+    <div class="col h">AutoCAD</div>
+
+    {rows.map(r => (
+      <>
+        <div class="col k">{r.k}</div>
+        <div class="col">{r.a}</div>
+        <div class="col muted">{r.b}</div>
+      </>
+    ))}
+  </div>
+
+  <style>
+    .head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+    .title{font-weight:900; font-size:18px; letter-spacing:-.01em;}
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .col{
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      font-size: 14px;
+    }
+    .col.h{font-weight:800; background: rgba(255,255,255,.06);}
+    .col.k{font-weight:700;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      height: 40px; padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .btn:hover{background: rgba(255,255,255,.09);}
+    @media (max-width: 840px){
+      .grid{grid-template-columns: 1fr;}
+    }
+  </style>
+</section>

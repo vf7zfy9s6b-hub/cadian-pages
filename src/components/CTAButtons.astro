@@ -1,0 +1,27 @@
+---
+const { compact = false } = Astro.props;
+---
+
+<div class={compact ? "cta compact" : "cta"}>
+  <a class="btn" href="/teklif-al">Teklif Al</a>
+  <a class="btn primary" href="/demo-indir">Demo İndir</a>
+</div>
+
+<style>
+  .cta{display:flex; gap: 10px; flex-wrap:wrap; margin-top: 18px;}
+  .cta.compact{margin-top: 0;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    height: 44px; padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: rgba(231,234,240,.92);
+    transition: transform .12s ease, background .12s ease, border-color .12s ease;
+  }
+  .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
+  .btn.primary{
+    background: linear-gradient(90deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+    border-color: rgba(110,231,255,.25);
+  }
+</style>

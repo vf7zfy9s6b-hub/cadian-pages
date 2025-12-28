@@ -1,0 +1,165 @@
+---
+const nav = [
+  { href: "/", label: "Ana Sayfa" },
+  { href: "/ozellikler", label: "Özellikler" },
+  { href: "/karsilastirma", label: "Karşılaştırma" },
+  { href: "/urunler", label: "Ürünler" },
+  { href: "/referanslar", label: "Referanslar" },
+  { href: "/blog", label: "Blog" },
+];
+const tickerItems = ["Kalıcı Lisans", "%100 DWG Uyumu", "En Uygun Fiyat"];
+---
+
+<header class="top">
+  <div class="ticker" aria-label="CADian avantajları">
+    <div class="track">
+      <div class="row">
+        {tickerItems.map((t) => <span class="item">★ {t}</span>)}
+        {tickerItems.map((t) => <span class="item">★ {t}</span>)}
+        {tickerItems.map((t) => <span class="item">★ {t}</span>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <a class="brand" href="/" aria-label="CADian">
+      <span class="logo">C</span>
+      <span class="name">CADian</span>
+      <span class="sub">AutoCAD Alternatifi</span>
+    </a>
+
+    <nav class="nav" aria-label="Ana menü">
+      {nav.map((i) => <a class="link" href={i.href}>{i.label}</a>)}
+    </nav>
+
+    <div class="cta">
+      <a class="btn" href="/teklif-al">Teklif Al</a>
+      <a class="btn primary" href="/demo-indir">Demo İndir</a>
+      <button class="menuBtn" aria-label="Menü" aria-expanded="false">☰</button>
+    </div>
+  </div>
+
+  <div class="mobile" hidden>
+    <div class="mobileInner">
+      {nav.map((i) => <a class="mLink" href={i.href}>{i.label}</a>)}
+      <div class="mCta">
+        <a class="btn" href="/teklif-al">Teklif Al</a>
+        <a class="btn primary" href="/demo-indir">Demo İndir</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const header = document.currentScript.closest("header");
+  const btn = header.querySelector(".menuBtn");
+  const mobile = header.querySelector(".mobile");
+  btn.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    mobile.hidden = open;
+  });
+</script>
+
+<style>
+  .top{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);}
+  .ticker{
+    height: 30px;
+    display:flex; align-items:center;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    background: rgba(3,7,18,.55);
+    overflow:hidden;
+  }
+  .track{width:100%; overflow:hidden;}
+  .row{
+    display:flex; gap: 22px; white-space: nowrap;
+    will-change: transform;
+    animation: scroll 16s linear infinite;
+    padding-left: 18px;
+  }
+  .item{font-size: 12.5px; color: rgba(231,234,240,.78);}
+  @keyframes scroll{
+    from{transform: translateX(0)}
+    to{transform: translateX(-33.333%)}
+  }
+
+  .bar{
+    width:min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    height: 64px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap: 14px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    background: rgba(3,7,18,.45);
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .logo{
+    width:32px; height:32px; border-radius: 10px;
+    display:grid; place-items:center;
+    background: linear-gradient(135deg, rgba(110,231,255,.25), rgba(167,139,250,.18));
+    border: 1px solid rgba(255,255,255,.16);
+    font-weight: 700;
+  }
+  .name{font-weight: 700}
+  .sub{font-size: 12.5px; color: rgba(231,234,240,.70); margin-left: 6px;}
+
+  .nav{display:flex; gap: 16px;}
+  .link{
+    font-size: 14px; color: rgba(231,234,240,.78);
+    padding: 8px 10px; border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .link:hover{color: rgba(231,234,240,.95); border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.05);}
+
+  .cta{display:flex; align-items:center; gap:10px;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    height: 40px; padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: rgba(231,234,240,.92);
+    cursor:pointer;
+    transition: transform .12s ease, background .12s ease, border-color .12s ease;
+  }
+  .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
+  .btn.primary{
+    background: linear-gradient(90deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+    border-color: rgba(110,231,255,.25);
+  }
+
+  .menuBtn{
+    display:none;
+    height: 40px; width: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: rgba(231,234,240,.92);
+    cursor:pointer;
+  }
+
+  .mobile{
+    background: rgba(3,7,18,.92);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  .mobileInner{
+    width:min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0 16px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .mLink{
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    color: rgba(231,234,240,.88);
+  }
+  .mCta{display:flex; gap:10px; margin-top: 6px; flex-wrap:wrap;}
+
+  @media (max-width: 960px){
+    .nav{display:none;}
+    .sub{display:none;}
+    .menuBtn{display:inline-flex; align-items:center; justify-content:center;}
+  }
+</style>

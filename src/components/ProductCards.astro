@@ -1,0 +1,103 @@
+---
+const products = [
+  {
+    name: "CADian 2026 Classic",
+    for: "2D ağırlıklı çalışanlar",
+    bullets: ["Yerel DWG", "Tanıdık komutlar", "Hızlı günlük iş akışı", "Teknik destek"],
+  },
+  {
+    name: "CADian 2026 Professional",
+    for: "2D + 3D ihtiyaçları",
+    bullets: ["3D araçlar", "Gelişmiş özellikler", "DWG uyumu", "Teknik destek"],
+    badge: "Popüler",
+  },
+  {
+    name: "Classic Network",
+    for: "Ekip / çoklu kullanıcı",
+    bullets: ["Ağ lisansı", "Merkezi yönetim", "Esnek kullanım", "Kurumsal uygunluk"],
+  },
+  {
+    name: "Professional Network",
+    for: "Ekip + 3D yoğun kullanım",
+    bullets: ["Ağ lisansı + Pro", "Ekip verimliliği", "Kurumsal kullanım", "Teknik destek"],
+  },
+  {
+    name: "Academic",
+    for: "Öğrenci / akademik kullanım",
+    bullets: ["Eğitim amaçlı", "Uygun lisans", "DWG uyumu", "Temel ihtiyaçlar"],
+  },
+];
+---
+
+<section>
+  <div class="head">
+    <div>
+      <div class="kicker">Ürünler</div>
+      <div class="title">İhtiyacına göre lisans seç</div>
+      <div class="muted" style="margin-top:6px;">Fiyat göstermiyoruz — kullanım senaryona göre en uygun teklifi veriyoruz.</div>
+    </div>
+    <a class="btn" href="/urunler">Tüm ürünler →</a>
+  </div>
+
+  <div class="grid">
+    {products.map(p => (
+      <article class="card">
+        <div class="top">
+          <div class="name">{p.name}</div>
+          {p.badge ? <span class="badge">{p.badge}</span> : null}
+        </div>
+        <div class="muted small">Kimler için: <strong style="color: rgba(231,234,240,.92)">{p.for}</strong></div>
+        <ul class="list">
+          {p.bullets.map(b => <li>✓ {b}</li>)}
+        </ul>
+        <div class="actions">
+          <a class="btn2" href="/teklif-al">Teklif Al</a>
+          <a class="btn2 primary" href="/demo-indir">Demo İndir</a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <style>
+    .head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;}
+    .title{font-weight:900; font-size:20px; letter-spacing:-.01em;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      height: 40px; padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .btn:hover{background: rgba(255,255,255,.09);}
+    .grid{display:grid; gap: 14px; grid-template-columns: repeat(3, minmax(0,1fr));}
+    .card{padding: 16px;}
+    .top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .name{font-weight:900; letter-spacing:-.01em;}
+    .badge{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(110,231,255,.25);
+      background: rgba(110,231,255,.10);
+      color: rgba(231,234,240,.92);
+    }
+    .small{font-size: 13.5px; margin-top: 8px;}
+    .list{margin: 12px 0 0; padding: 0; list-style: none; color: rgba(231,234,240,.80); font-size: 14px; line-height: 1.6;}
+    .list li{padding: 4px 0;}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;}
+    .btn2{
+      display:inline-flex; align-items:center; justify-content:center;
+      height: 42px; padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .btn2.primary{
+      background: linear-gradient(90deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+      border-color: rgba(110,231,255,.25);
+    }
+    .btn2:hover{background: rgba(255,255,255,.09);}
+    @media (max-width: 980px){ .grid{grid-template-columns: 1fr 1fr;} }
+    @media (max-width: 680px){ .grid{grid-template-columns: 1fr;} }
+  </style>
+</section>
