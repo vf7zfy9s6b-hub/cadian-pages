@@ -1,0 +1,9 @@
+LOCAL:
+  npm install
+  npm run dev
+BUILD:
+  npm run build
+DEPLOY:
+  git add .
+  git commit -m "Update"
+  git push
